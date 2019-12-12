@@ -1,0 +1,42 @@
+﻿@model RVWBank1.Models.Account;
+@{
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Transactions</title>
+</head>
+<body>
+    <h1>Transaction History</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Account</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Amount($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Model.Transactions)
+                {
+                    <tr>
+
+                        <td>@transaction.AccountType</td>
+                        <td>@transaction.Method </td>
+                        <td>$@transaction.Amount </td>
+                    </tr>
+                }
+                </tbody>
+        </table>
+
+
+
+
+
+
+
+</body>
+</html>

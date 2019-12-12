@@ -1,0 +1,41 @@
+﻿@model RVWBank1.Models.Account;
+@{
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome, @Model.User.FirstName @Model.User.LastName</h1>
+    <h5>How Are You Today?</h5>
+    <hr />
+    <div style="margin-left:25%; margin-right:25%">
+        <table class="table table-bordered ">
+            <tbody>
+                <tr>
+                    <th scope="row">Account ID</th>
+                    <th>@Model.Id</th>
+                </tr>
+                <tr>
+                    <th scope="row">Checking</th>
+                    <th>$@Model.Checkings</th>
+                </tr>
+                <tr>
+                    <th scope="row">Savings</th>
+                    <th>$@Model.Savings</th>
+                </tr>
+                <tr>
+                    <th scope="row">Invested</th>
+                    <th>$@Model.Invested</th>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</body>
+</html>

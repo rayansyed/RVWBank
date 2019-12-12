@@ -1,0 +1,52 @@
+﻿@model RVWBank1.Models.Account
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Account Details</title>
+</head>
+<body>
+    <div>
+        <h5 style="text-align:left; margin: 10px;">Name:</h5>
+        <p style="text-align:left; margin: 10px;">@Model.User.FirstName @Model.User.LastName</p>
+
+        <h5 style="text-align:left; margin: 10px;">Email:</h5>
+        <p style="text-align:left; margin: 10px;">@Model.User.Email</p>
+
+        <h5 style="text-align:left; margin: 10px;">Checkings:</h5>
+        <p style="text-align:left; margin: 10px;">$@Model.Checkings</p>
+
+        <h5 style="text-align:left; margin: 10px;">Savings:</h5>
+        <p style="text-align:left; margin: 10px;">$@Model.Savings</p>
+
+        <h5 style="text-align:left; margin: 10px;">Invested:</h5>
+        <p style="text-align:left; margin: 10px;">$@Model.Invested</p>
+
+        <h5 style="text-align:left; margin: 10px;">Transaction History:</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Account</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Amount($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Model.Transactions)
+                {
+                    <tr>
+
+                        <td>@transaction.AccountType</td>
+                        <td>@transaction.Method </td>
+                        <td>$@transaction.Amount </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

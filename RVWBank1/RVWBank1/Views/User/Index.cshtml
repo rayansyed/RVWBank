@@ -1,0 +1,50 @@
+﻿@model RVWBank1.Models.User;
+@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <div>
+        <h5 id="valdiv" style="color:red">
+
+        </h5>
+        <form asp-action="Login" name="signupForm" method="post" onsubmit="return validateForm()" style="margin-left:35%; margin-right:35%">
+            <div class="form-group">
+                <input asp-for="Username" class="form-control "  placeholder="Username" id="uname" />
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password" id="pword" />
+            </div>
+
+            <button type="submit" class="btn btn-outline-dark">Login</button>
+        </form>
+    </div>
+
+    <script>
+
+        function validateForm() {
+            var fname = document.forms["signupForm"]["uname"].value;
+            var password = document.forms["signupForm"]["pword"].value;
+            var valdiv = document.getElementById("valdiv");
+            valdiv.innerHTML = "";
+
+            if (fname == "" || password == "" ) {
+
+                valdiv.append("Please Enter Both Username and Password");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>

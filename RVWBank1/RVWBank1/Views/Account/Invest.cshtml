@@ -1,0 +1,81 @@
+﻿@model RVWBank1.Models.Account;
+@{
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Investment</title>
+</head>
+<body>
+    <h5 id="valdiv" style="color:red">
+    </h5>
+    <h1>Deposit To Investment</h1>
+    <form name="signupForm" onsubmit="return validateFormDeposit()" asp-action="SaveInvest" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label>Account Type: </label>
+            <input id="aC" name="accountType" type="radio" value="Checkings" checked/>
+            <label for="aC">Checkings</label>
+            <input id="aS" name="accountType" type="radio" value="Savings" />
+            <label for="aS">Savings</label>
+
+        </div>
+        <div>
+            <label name="amount">Amount: </label>
+            <input id="damount" name="amount" />
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Confirm</button>
+    </form>
+    <h1>Withdraw From Investment</h1>
+    <form name="signupForm2" asp-action="WithdrawInvest" onsubmit="return validateFormWithdraw()" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label>Account Type: </label>
+            <input id="aC" name="accountType" type="radio" value="Checkings" checked/>
+            <label for="aC">Checkings</label>
+            <input id="aS" name="accountType" type="radio" value="Savings" />
+            <label for="aS">Savings</label>
+
+        </div>
+        <div>
+            <label name="amount">Amount: </label>
+            <input id="wamount" name="amount" />
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Confirm</button>
+    </form>
+
+    <script>
+
+        function validateFormDeposit() {
+            var damount = document.forms["signupForm"]["damount"].value;
+            var valdiv = document.getElementById("valdiv");
+            valdiv.innerHTML = "";
+
+            if (damount == "" || damount <=0) {
+                valdiv.append("Deposit Amount Must Be Greater Than 0");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateFormWithdraw() {
+            var wamount = document.forms["signupForm2"]["wamount"].value;
+            var valdiv = document.getElementById("valdiv");
+            valdiv.innerHTML = "";
+
+            if (wamount == "" || wamount <= 0) {
+
+                valdiv.append("Withdraw Amount Must Be Greater Than 0");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>

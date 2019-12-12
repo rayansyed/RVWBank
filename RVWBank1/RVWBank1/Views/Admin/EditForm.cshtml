@@ -1,0 +1,74 @@
+﻿@model RVWBank1.Models.Account;
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Account</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <div>
+        <h5 id="valdiv" style="color:red">
+        </h5>
+        <form name="EditForm" asp-action="EditAcc" onsubmit="return validateForm()" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div>
+                <label>First Name</label>
+                <input id="fname" name="firstname" value="@Model.User.FirstName" placeholder="First Name" />
+            </div>
+            <br />
+            <div>
+                <label >Last Name</label>
+                <input id="lname" name="lastname" value="@Model.User.LastName" placeholder="Last Name" />
+            </div>
+            <br />
+            <div>
+                <label asp-for="Checkings">Checkings $</label>
+                <input id="checkings" asp-for="Checkings"/>
+            </div>
+            <br />
+            <div>
+                <label asp-for="Savings">Savings $</label>
+                <input id="savings" asp-for="Savings"/>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-outline-dark">Save Account</button>
+        </form>
+
+        <script>
+
+            function validateForm() {
+                var fname = document.forms["EditForm"]["fname"].value;
+                var lname = document.forms["EditForm"]["lname"].value;
+                var checkings = document.forms["EditForm"]["checkings"].value;
+                var savings = document.forms["EditForm"]["savings"].value;
+                var valdiv = document.getElementById("valdiv");
+
+                valdiv.innerHTML = "";
+
+
+                if (fname == "" || lname == "" || checkings == "" || savings == "") {
+                    valdiv.append("Please Fill All Fields");
+                    return false
+                }
+
+                if (checkings < 0 || savings < 0) {
+                    valdiv.append("Checkings And Savings Must Be Greater Than $0");
+                    return false
+                }
+
+                return true
+            }
+
+        </script>
+
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@using RVWBank1.Models;
+@model IEnumerable<RVWBank1.Models.Account>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+    <h1>Welcome, Admin</h1>
+    <h5>List of Accounts</h5>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Details</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model)
+            {
+            <tr>
+
+                <td>@account.User.FirstName @account.User.LastName</td>
+                <td>@account.User.Username</td>
+                <td><a class="btn btn-outline-dark" href="\Admin\Details\@account.Id">Details</a></td>
+                <td><a class="btn btn-outline-warning" href="\Admin\Edit\@account.Id">Edit</a></td>
+                <td><a class="btn btn-outline-danger" href="\Admin\Delete\@account.Id">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+</html>

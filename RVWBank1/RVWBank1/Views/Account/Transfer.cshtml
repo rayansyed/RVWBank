@@ -1,0 +1,61 @@
+﻿@model RVWBank1.Models.Account;
+@{
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>E Transfer</title>
+</head>
+<body>
+    <h1>Send Etransfer</h1>
+    <h5 id="valdiv" style="color:red">
+    </h5>
+    <form name="signupForm" onsubmit="return validateForm()" asp-action="SaveETransfer" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label>Account Type: </label>
+            <input id="aC" name="accountType" type="radio" value="Checkings" checked />
+            <label for="aC">Checkings</label>
+            <input id="aS" name="accountType" type="radio" value="Savings" />
+            <label for="aS">Savings</label>
+
+        </div>
+        <div>
+            <label>Transfer Recipient ID: </label>
+            <input id="tId" name="transferID" value="" />
+        </div>
+        <div>
+            <label name="amount">Amount: </label>
+            <input id="tamount" name="amount" />
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Confirm</button>
+    </form>
+
+    <script>
+
+        function validateForm() {
+            var amount = document.forms["signupForm"]["tamount"].value;
+            var transferId = document.forms["signupForm"]["tId"].value;
+            var valdiv = document.getElementById("valdiv");
+            valdiv.innerHTML = "";
+
+            if (tId == "") {
+                valdiv.append("Must Enter Recipient ID");
+                return false;
+            }
+
+
+            if (amount == "" || amount <= 0) {
+
+                valdiv.append("Transfer Amount Must Be Greater Than 0");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
